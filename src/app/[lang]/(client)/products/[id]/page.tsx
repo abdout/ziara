@@ -54,8 +54,8 @@ export const generateMetadata = async ({
 
   const product = await fetchProduct(id);
   return {
-    title: product.name,
-    describe: product.description,
+    title: `${product.name} | Ziara`,
+    description: product.description,
   };
 };
 

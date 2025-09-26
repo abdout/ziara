@@ -34,10 +34,15 @@ export async function generateMetadata({
   const dict = await getDictionary(lang);
 
   return {
-    title: lang === 'ar' ? 'متجر تريند لاما - أفضل الملابس' : 'Trendlama - Best Clothes',
+    title: lang === 'ar' ? 'زيارة - متجر الأزياء العصرية' : 'Ziara - Modern Fashion Store',
     description: lang === 'ar'
-      ? 'تريند لاما هو أفضل مكان للعثور على أفضل الملابس'
-      : 'Trendlama is the best place to find the best clothes',
+      ? 'زيارة هو وجهتك المفضلة للأزياء العصرية والملابس الأنيقة'
+      : 'Ziara is your destination for modern fashion and stylish clothing',
+    icons: {
+      icon: '/client/logo.png',
+      shortcut: '/client/logo.png',
+      apple: '/client/logo.png',
+    },
   };
 }
 
