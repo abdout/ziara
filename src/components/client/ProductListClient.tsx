@@ -43,7 +43,7 @@ const ProductListClient = ({ category, sort, search, params }: ProductListClient
 
   if (loading) {
     return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-12">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {[...Array(params === "homepage" ? 8 : 12)].map((_, i) => (
           <div key={i} className="animate-pulse">
             <div className="bg-gray-200 aspect-[2/3] rounded-md mb-4"></div>
@@ -57,7 +57,7 @@ const ProductListClient = ({ category, sort, search, params }: ProductListClient
 
   return (
     <>
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-12">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}

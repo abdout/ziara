@@ -43,7 +43,7 @@ const ProductCard = ({ product }: { product: ProductType }) => {
     <div className="shadow-lg rounded-lg overflow-hidden">
       {/* IMAGE */}
       <Link href={`/products/${product.id}`}>
-        <div className="relative aspect-[2/3]">
+        <div className="relative aspect-[3/4]">
           <Image
             src={(product.images as any)?.[productTypes.color]?.[0] || ""}
             alt={product.name}
@@ -53,18 +53,18 @@ const ProductCard = ({ product }: { product: ProductType }) => {
         </div>
       </Link>
       {/* PRODUCT DETAIL */}
-      <div className="flex flex-col gap-4 p-4">
+      <div className="flex flex-col gap-2 p-3">
         <h1 className="font-medium">{product.name}</h1>
         <p className="text-sm text-gray-500">{product.shortDescription}</p>
         {/* PRODUCT TYPES */}
-        <div className="flex items-center gap-4 text-xs">
+        <div className="flex items-center gap-3 text-xs">
           {/* SIZES */}
           <div className="flex flex-col gap-1">
             <span className="text-gray-500">Size</span>
             <select
               name="size"
               id="size"
-              className="ring ring-gray-300 rounded-md px-2 py-1"
+              className="ring ring-gray-300 rounded-md px-1 py-0.5 text-xs"
               onChange={(e) =>
                 handleProductType({ type: "size", value: e.target.value })
               }
@@ -93,7 +93,7 @@ const ProductCard = ({ product }: { product: ProductType }) => {
                   }
                 >
                   <div
-                    className="w-[14px] h-[14px] rounded-full"
+                    className="w-[12px] h-[12px] rounded-full"
                     style={{ backgroundColor: color }}
                   />
                 </div>

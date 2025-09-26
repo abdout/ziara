@@ -4,7 +4,6 @@ import { usePathname, useRouter } from 'next/navigation';
 import { useLocale, useSwitchLocaleHref } from '@/components/local/use-locale';
 import { localeConfig, i18n } from '@/components/local/config';
 import type { Locale } from '@/components/local/config';
-import { Globe } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
 
 export default function LanguageSwitcher() {
@@ -45,16 +44,12 @@ export default function LanguageSwitcher() {
     <div className="relative" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
         aria-label="Select language"
         aria-expanded={isOpen}
         aria-haspopup="true"
       >
-        <Globe className="w-4 h-4" />
-        <span className="hidden sm:inline">
-          {localeConfig[currentLocale]?.flag} {localeConfig[currentLocale]?.nativeName}
-        </span>
-        <span className="sm:hidden">
+        <span className="text-lg">
           {localeConfig[currentLocale]?.flag}
         </span>
         <svg

@@ -1,6 +1,6 @@
 {
   "common": {
-    "shop": "Shop",
+    "shop": "Ziara",
     "cart": "Cart",
     "checkout": "Checkout",
     "account": "Account",
@@ -152,7 +152,7 @@
     "newsletter": "Newsletter",
     "subscribe": "Subscribe",
     "followUs": "Follow Us",
-    "copyright": "© 2024 Shop. All rights reserved."
+    "copyright": "© 2024 Ziara. All rights reserved."
   },
   "admin": {
     "dashboard": "Dashboard",
