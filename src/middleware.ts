@@ -59,8 +59,26 @@ function getLocale(request: NextRequest): string {
 export default clerkMiddleware(async (auth, req) => {
   const pathname = req.nextUrl.pathname;
 
-  // Skip locale handling for API routes and static files
-  if (pathname.startsWith("/api") || pathname.startsWith("/_next")) {
+  // For API routes, check if they need authentication
+  if (pathname.startsWith("/api")) {
+    // Only protect non-GET methods for products/categories
+    const method = req.method;
+    if (
+      (pathname.startsWith("/api/products") || pathname.startsWith("/api/categories")) &&
+      method === "GET"
+    ) {
+      return NextResponse.next();
+    }
+
+    // Protect other API routes that need auth
+    if (!isPublicRoute(req)) {
+      await auth.protect();
+    }
+    return NextResponse.next();
+  }
+
+  // Skip locale handling for static files
+  if (pathname.startsWith("/_next")) {
     return NextResponse.next();
   }
 
