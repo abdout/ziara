@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import prisma from '@/lib/prisma'
 import { producer } from '@/lib/kafka'
-// import { auth } from '@clerk/nextjs/server'
+import { auth } from '@clerk/nextjs/server'
 import { Prisma } from '@prisma/client'
 
 // GET /api/products/[id] - Get a single product
@@ -41,9 +41,7 @@ export async function PUT(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    // const { userId, sessionClaims } = await auth()
-    const userId = 'temp-admin'
-    const sessionClaims = { metadata: { role: 'admin' } }
+    const { userId, sessionClaims } = await auth()
     const { id } = await params
 
     if (!userId) {
@@ -79,9 +77,7 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    // const { userId, sessionClaims } = await auth()
-    const userId = 'temp-admin'
-    const sessionClaims = { metadata: { role: 'admin' } }
+    const { userId, sessionClaims } = await auth()
     const { id } = await params
 
     if (!userId) {

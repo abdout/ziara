@@ -1,6 +1,30 @@
+import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { i18n } from "@/components/local/config";
+
+// Define public routes that don't require authentication
+const isPublicRoute = createRouteMatcher([
+  "/",
+  "/:lang",
+  "/:lang/products(.*)",
+  "/:lang/categories(.*)",
+  "/:lang/cart(.*)",
+  "/:lang/sign-in(.*)",
+  "/:lang/sign-up(.*)",
+  "/:lang/unauthorized(.*)",
+  "/:lang/api-test(.*)",
+  // API routes that should be public
+  "/api/products(.*)",
+  "/api/categories(.*)",
+  "/api/test(.*)",
+  "/api/webhooks(.*)",
+]);
+
+// Define admin-only routes
+const isAdminRoute = createRouteMatcher([
+  "/:lang/admin(.*)",
+]);
 
 // Helper function to check if pathname has locale
 function pathnameHasLocale(pathname: string) {
@@ -20,9 +44,7 @@ function getLocale(request: NextRequest): string {
   // Check Accept-Language header
   const acceptLang = request.headers.get("accept-language");
   if (acceptLang) {
-    // Try to match ar or en from the Accept-Language header
     const languages = acceptLang.toLowerCase();
-
     if (languages.includes("ar")) {
       return "ar";
     }
@@ -34,11 +56,23 @@ function getLocale(request: NextRequest): string {
   return i18n.defaultLocale;
 }
 
-export function middleware(req: NextRequest) {
+export default clerkMiddleware(async (auth, req) => {
   const pathname = req.nextUrl.pathname;
 
-  // IMPORTANT: Skip all API routes completely
+  // For API routes, skip authentication entirely for public endpoints
   if (pathname.startsWith("/api")) {
+    // Public API endpoints - no auth needed
+    if (
+      pathname.startsWith("/api/products") ||
+      pathname.startsWith("/api/categories") ||
+      pathname.startsWith("/api/test") ||
+      pathname.startsWith("/api/webhooks")
+    ) {
+      return NextResponse.next();
+    }
+
+    // Other API routes might need auth
+    await auth.protect();
     return NextResponse.next();
   }
 
@@ -68,6 +102,21 @@ export function middleware(req: NextRequest) {
   // Extract locale from pathname
   const locale = pathname.split('/')[1] || i18n.defaultLocale;
 
+  // Check if route requires authentication
+  if (!isPublicRoute(req)) {
+    await auth.protect();
+
+    // Check admin routes
+    if (isAdminRoute(req)) {
+      const { sessionClaims } = await auth();
+      const userRole = (sessionClaims as any)?.metadata?.role;
+
+      if (userRole !== "admin") {
+        return NextResponse.redirect(new URL(`/${locale}/unauthorized`, req.url));
+      }
+    }
+  }
+
   // Create response
   const response = NextResponse.next();
 
@@ -79,13 +128,15 @@ export function middleware(req: NextRequest) {
   });
 
   return response;
-}
+});
 
 export const config = {
   matcher: [
     // Match all pathnames except for
-    // - ... if they start with `/api`, `/_next` or `/_vercel`
+    // - ... if they start with `/_next` or `/_vercel`
     // - ... the ones containing a dot (e.g. `favicon.ico`)
-    "/((?!api|_next|_vercel|.*\\..*).*)",
+    "/((?!_next|_vercel|.*\\..*).*)",
+    // Always run for API routes
+    "/api/(.*)",
   ],
 };
