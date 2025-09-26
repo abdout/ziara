@@ -28,9 +28,21 @@ const fetchProduct = async (id: string) => {
   const baseUrl = getBaseUrl();
 
   const res = await fetch(
-    `${baseUrl}/api/products/${id}`,
-    { cache: 'no-store' }
+    `${baseUrl}/api/products/${id}`
   );
+
+  if (!res.ok) {
+    console.error(`Failed to fetch product: ${res.status} ${res.statusText}`);
+    throw new Error(`Failed to fetch product`);
+  }
+
+  const contentType = res.headers.get("content-type");
+  if (!contentType || !contentType.includes("application/json")) {
+    const text = await res.text();
+    console.error(`Expected JSON but got: ${text.substring(0, 200)}`);
+    throw new Error("Invalid response format");
+  }
+
   const data: ProductType = await res.json();
   return data;
 };

@@ -155,9 +155,21 @@ const fetchData = async ({
   const baseUrl = getBaseUrl();
 
   const res = await fetch(
-    `${baseUrl}/api/products?${category ? `category=${category}` : ""}${search ? `&search=${search}` : ""}&sort=${sort || "newest"}${params === "homepage" ? "&limit=8" : ""}`,
-    { cache: 'no-store' }
+    `${baseUrl}/api/products?${category ? `category=${category}` : ""}${search ? `&search=${search}` : ""}&sort=${sort || "newest"}${params === "homepage" ? "&limit=8" : ""}`
   );
+
+  if (!res.ok) {
+    console.error(`Failed to fetch products: ${res.status} ${res.statusText}`);
+    return [];
+  }
+
+  const contentType = res.headers.get("content-type");
+  if (!contentType || !contentType.includes("application/json")) {
+    const text = await res.text();
+    console.error(`Expected JSON but got: ${text.substring(0, 200)}`);
+    return [];
+  }
+
   const data: ProductType[] = await res.json();
   return data;
 };
