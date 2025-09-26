@@ -1,26 +1,30 @@
 import Image from "next/image";
+import type { Locale } from "@/components/local/config";
+import { getShopDictionary } from "@/components/local/shop-dictionary";
 
-export function FeaturesSection() {
+export function FeaturesSection({ locale }: { locale: Locale }) {
+  const dict = getShopDictionary(locale);
+
   const features = [
     {
       icon: "/client/box.svg",
-      title: "Discount",
-      description: "Every week",
+      title: dict.features.discount.title,
+      description: dict.features.discount.description,
     },
     {
       icon: "/client/delivery-truck.svg",
-      title: "Free Delivery",
-      description: "100% Free",
+      title: dict.features.freeDelivery.title,
+      description: dict.features.freeDelivery.description,
     },
     {
       icon: "/client/24-hours.svg",
-      title: "Great Support",
-      description: "Great experiences",
+      title: dict.features.greatSupport.title,
+      description: dict.features.greatSupport.description,
     },
     {
       icon: "/client/shield.svg",
-      title: "Secure Payment",
-      description: "100% Secure",
+      title: dict.features.securePayment.title,
+      description: dict.features.securePayment.description,
     },
   ];
 

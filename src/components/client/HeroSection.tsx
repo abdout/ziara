@@ -1,7 +1,10 @@
  import Image from "next/image";
 import FeaturesSection from "./FeaturesSection";
+import type { Locale } from "@/components/local/config";
+import { getShopDictionary } from "@/components/local/shop-dictionary";
 
-const HeroSection = () => {
+const HeroSection = ({ locale }: { locale: Locale }) => {
+  const dict = getShopDictionary(locale);
   const productImages = [
     "/client/Puffer Jacket.svg",
     "/client/Handbag.svg",
@@ -30,13 +33,13 @@ const HeroSection = () => {
 
         {/* Text */}
         <h2 className="text-center text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-800 pb-6">
-          Stylish. Bold. Comfort. Sleek.
+          {dict.hero.slogan}
         </h2>
       </div>
 
         {/* Features Section - attached to hero */}
         <div className="bg-gray-100 rounded-b-lg">
-          <FeaturesSection />
+          <FeaturesSection locale={locale} />
         </div>
       </div>
     </div>

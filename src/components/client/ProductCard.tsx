@@ -7,8 +7,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import type { Locale } from "@/components/local/config";
+import { getShopDictionary } from "@/components/local/shop-dictionary";
 
-const ProductCard = ({ product }: { product: ProductType }) => {
+const ProductCard = ({ product, locale }: { product: ProductType; locale: Locale }) => {
+  const dict = getShopDictionary(locale);
   const [productTypes, setProductTypes] = useState({
     size: product.sizes[0]!,
     color: product.colors[0]!,
@@ -36,7 +39,7 @@ const ProductCard = ({ product }: { product: ProductType }) => {
       selectedSize: productTypes.size,
       selectedColor: productTypes.color,
     });
-    toast.success("Product added to cart")
+    toast.success(dict.cart.itemAdded)
   };
 
   return (
@@ -60,7 +63,7 @@ const ProductCard = ({ product }: { product: ProductType }) => {
         <div className="flex items-center gap-3 text-xs">
           {/* SIZES */}
           <div className="flex flex-col gap-1">
-            <span className="text-gray-500">Size</span>
+            <span className="text-gray-500">{dict.products.size}</span>
             <select
               name="size"
               id="size"
@@ -78,7 +81,7 @@ const ProductCard = ({ product }: { product: ProductType }) => {
           </div>
           {/* COLORS */}
           <div className="flex flex-col gap-1">
-            <span className="text-gray-500">Color</span>
+            <span className="text-gray-500">{dict.products.color}</span>
             <div className="flex items-center gap-2">
               {product.colors.map((color) => (
                 <div

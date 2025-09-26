@@ -4,15 +4,17 @@ import { useEffect, useState } from 'react';
 import { ProductType } from "@/types";
 import ProductCard from "./ProductCard";
 import Link from "next/link";
+import type { Locale } from "@/components/local/config";
 
 interface ProductListClientProps {
   category: string;
   sort?: string;
   search?: string;
   params: "homepage" | "products";
+  locale: Locale;
 }
 
-const ProductListClient = ({ category, sort, search, params }: ProductListClientProps) => {
+const ProductListClient = ({ category, sort, search, params, locale }: ProductListClientProps) => {
   const [products, setProducts] = useState<ProductType[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -59,7 +61,7 @@ const ProductListClient = ({ category, sort, search, params }: ProductListClient
     <>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
+          <ProductCard key={product.id} product={product} locale={locale} />
         ))}
       </div>
       <Link

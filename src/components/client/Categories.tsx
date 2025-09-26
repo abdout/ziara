@@ -1,46 +1,49 @@
 "use client";
 import Image from "next/image";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import type { Locale } from "@/components/local/config";
+import { getShopDictionary } from "@/components/local/shop-dictionary";
 
-const categories = [
-  {
-    name: "Bowtie",
-    icon: "/client/Bowtie.svg",
-    slug: "bowtie",
-  },
-  {
-    name: "Handbag",
-    icon: "/client/Handbag 3.svg",
-    slug: "handbag",
-  },
-  {
-    name: "Scarf",
-    icon: "/client/Scarf.svg",
-    slug: "scarf",
-  },
-  {
-    name: "Shorts",
-    icon: "/client/Shorts 3.svg",
-    slug: "shorts",
-  },
-  {
-    name: "Skirt",
-    icon: "/client/Tennis Skirt.svg",
-    slug: "tennis-skirt",
-  },
-  {
-    name: "Sweater",
-    icon: "/client/Sweater.svg",
-    slug: "sweater",
-  },
-  {
-    name: "Waistcoat",
-    icon: "/client/Waistcoat 3.svg",
-    slug: "waistcoat",
-  },
-];
+const Categories = ({ locale }: { locale: Locale }) => {
+  const dict = getShopDictionary(locale);
 
-const Categories = () => {
+  const categories = [
+    {
+      name: dict.categories.bowtie,
+      icon: "/client/Bowtie.svg",
+      slug: "bowtie",
+    },
+    {
+      name: dict.categories.handbag,
+      icon: "/client/Handbag 3.svg",
+      slug: "handbag",
+    },
+    {
+      name: dict.categories.scarf,
+      icon: "/client/Scarf.svg",
+      slug: "scarf",
+    },
+    {
+      name: dict.categories.shorts,
+      icon: "/client/Shorts 3.svg",
+      slug: "shorts",
+    },
+    {
+      name: dict.categories.skirt,
+      icon: "/client/Tennis Skirt.svg",
+      slug: "tennis-skirt",
+    },
+    {
+      name: dict.categories.sweater,
+      icon: "/client/Sweater.svg",
+      slug: "sweater",
+    },
+    {
+      name: dict.categories.waistcoat,
+      icon: "/client/Waistcoat 3.svg",
+      slug: "waistcoat",
+    },
+  ];
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();

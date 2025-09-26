@@ -24,6 +24,36 @@
     "admin": "لوحة التحكم",
     "dashboard": "لوحة القيادة"
   },
+  "hero": {
+    "slogan": "أنيق. جريء. مريح. أملس."
+  },
+  "features": {
+    "discount": {
+      "title": "خصم",
+      "description": "كل أسبوع"
+    },
+    "freeDelivery": {
+      "title": "توصيل مجاني",
+      "description": "مجاني 100%"
+    },
+    "greatSupport": {
+      "title": "دعم رائع",
+      "description": "تجارب رائعة"
+    },
+    "securePayment": {
+      "title": "دفع آمن",
+      "description": "آمن 100%"
+    }
+  },
+  "categories": {
+    "bowtie": "ربطة عنق",
+    "handbag": "حقيبة يد",
+    "scarf": "وشاح",
+    "shorts": "شورت",
+    "skirt": "تنورة",
+    "sweater": "سترة",
+    "waistcoat": "صدرية"
+  },
   "products": {
     "title": "المنتجات",
     "allProducts": "جميع المنتجات",
@@ -47,6 +77,7 @@
     "sortBy": "ترتيب حسب",
     "sortOptions": {
       "newest": "الأحدث",
+      "oldest": "الأقدم",
       "priceLowToHigh": "السعر: من الأقل للأعلى",
       "priceHighToLow": "السعر: من الأعلى للأقل",
       "nameAZ": "الاسم: أ-ي",

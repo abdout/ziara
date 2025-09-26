@@ -24,6 +24,36 @@
     "admin": "Admin",
     "dashboard": "Dashboard"
   },
+  "hero": {
+    "slogan": "Stylish. Bold. Comfort. Sleek."
+  },
+  "features": {
+    "discount": {
+      "title": "Discount",
+      "description": "Every week"
+    },
+    "freeDelivery": {
+      "title": "Free Delivery",
+      "description": "100% Free"
+    },
+    "greatSupport": {
+      "title": "Great Support",
+      "description": "Great experiences"
+    },
+    "securePayment": {
+      "title": "Secure Payment",
+      "description": "100% Secure"
+    }
+  },
+  "categories": {
+    "bowtie": "Bowtie",
+    "handbag": "Handbag",
+    "scarf": "Scarf",
+    "shorts": "Shorts",
+    "skirt": "Skirt",
+    "sweater": "Sweater",
+    "waistcoat": "Waistcoat"
+  },
   "products": {
     "title": "Products",
     "allProducts": "All Products",
@@ -47,6 +77,7 @@
     "sortBy": "Sort By",
     "sortOptions": {
       "newest": "Newest",
+      "oldest": "Oldest",
       "priceLowToHigh": "Price: Low to High",
       "priceHighToLow": "Price: High to Low",
       "nameAZ": "Name: A-Z",
