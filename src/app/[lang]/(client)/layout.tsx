@@ -67,7 +67,7 @@ export default async function RootLayout({
           <div className="mx-auto p-4 sm:px-0 sm:max-w-xl md:max-w-3xl lg:max-w-4xl xl:max-w-6xl">
             <NavbarWithI18n locale={lang} />
             {children}
-            <Footer />
+            <Footer locale={lang} />
           </div>
           <ToastContainer
             position={isRtl ? "bottom-left" : "bottom-right"}
