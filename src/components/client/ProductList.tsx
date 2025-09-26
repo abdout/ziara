@@ -3,6 +3,7 @@ import Categories from "./Categories";
 import ProductCard from "./ProductCard";
 import Link from "next/link";
 import Filter from "./Filter";
+import { getBaseUrl } from "@/lib/get-base-url";
 
 // TEMPORARY
 // const products: ProductsType = [
@@ -151,7 +152,8 @@ const fetchData = async ({
   search?: string;
   params: "homepage" | "products";
 }) => {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+  const baseUrl = getBaseUrl();
+
   const res = await fetch(
     `${baseUrl}/api/products?${category ? `category=${category}` : ""}${search ? `&search=${search}` : ""}&sort=${sort || "newest"}${params === "homepage" ? "&limit=8" : ""}`,
     { cache: 'no-store' }

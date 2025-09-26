@@ -1,6 +1,7 @@
 import ProductInteraction from "@/components/client/ProductInteraction";
 import { ProductType } from "@/types";
 import Image from "next/image";
+import { getBaseUrl } from "@/lib/get-base-url";
 
 // TEMPORARY
 // const product: ProductType = {
@@ -24,7 +25,8 @@ import Image from "next/image";
 // };
 
 const fetchProduct = async (id: string) => {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+  const baseUrl = getBaseUrl();
+
   const res = await fetch(
     `${baseUrl}/api/products/${id}`,
     { cache: 'no-store' }
