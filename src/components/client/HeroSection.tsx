@@ -16,7 +16,7 @@ const HeroSection = ({ locale }: { locale: Locale }) => {
     <div className="h-[calc(100vh-120px)] md:h-[calc(100vh-80px)] flex flex-col justify-start md:justify-center items-center pt-8 md:pt-0">
       <div className="w-full">
         {/* Hero Banner */}
-        <div className="bg-amber-400 rounded-t-lg px-3 py-6 md:p-6">
+        <div className="bg-amber-400 rounded-t-lg px-3 py-20 md:p-6">
         {/* Images - 4 in a row on all screens */}
         <div className="flex justify-center gap-2 md:gap-8 mb-4 md:mb-6">
           {productImages.map((src, index) => (
