@@ -1,0 +1,195 @@
+{
+  "common": {
+    "shop": "Shop",
+    "cart": "Cart",
+    "checkout": "Checkout",
+    "account": "Account",
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "signOut": "Sign Out",
+    "search": "Search",
+    "searchProducts": "Search products...",
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "backToHome": "Back to Home",
+    "currency": "$"
+  },
+  "navigation": {
+    "home": "Home",
+    "products": "Products",
+    "categories": "Categories",
+    "orders": "Orders",
+    "about": "About",
+    "contact": "Contact",
+    "admin": "Admin",
+    "dashboard": "Dashboard"
+  },
+  "products": {
+    "title": "Products",
+    "allProducts": "All Products",
+    "newArrivals": "New Arrivals",
+    "featured": "Featured Products",
+    "popular": "Popular Products",
+    "addToCart": "Add to Cart",
+    "viewDetails": "View Details",
+    "price": "Price",
+    "size": "Size",
+    "color": "Color",
+    "quantity": "Quantity",
+    "inStock": "In Stock",
+    "outOfStock": "Out of Stock",
+    "selectSize": "Select Size",
+    "selectColor": "Select Color",
+    "description": "Description",
+    "specifications": "Specifications",
+    "reviews": "Reviews",
+    "relatedProducts": "Related Products",
+    "sortBy": "Sort By",
+    "sortOptions": {
+      "newest": "Newest",
+      "priceLowToHigh": "Price: Low to High",
+      "priceHighToLow": "Price: High to Low",
+      "nameAZ": "Name: A-Z",
+      "nameZA": "Name: Z-A"
+    },
+    "filters": {
+      "title": "Filters",
+      "category": "Category",
+      "priceRange": "Price Range",
+      "size": "Size",
+      "color": "Color",
+      "apply": "Apply Filters",
+      "clear": "Clear All"
+    }
+  },
+  "cart": {
+    "title": "Shopping Cart",
+    "empty": "Your cart is empty",
+    "continueShopping": "Continue Shopping",
+    "items": "items",
+    "item": "item",
+    "subtotal": "Subtotal",
+    "shipping": "Shipping",
+    "tax": "Tax",
+    "total": "Total",
+    "proceedToCheckout": "Proceed to Checkout",
+    "remove": "Remove",
+    "updateQuantity": "Update Quantity",
+    "clearCart": "Clear Cart",
+    "cartUpdated": "Cart updated",
+    "itemRemoved": "Item removed from cart",
+    "itemAdded": "Item added to cart"
+  },
+  "checkout": {
+    "title": "Checkout",
+    "shippingAddress": "Shipping Address",
+    "paymentMethod": "Payment Method",
+    "orderSummary": "Order Summary",
+    "placeOrder": "Place Order",
+    "processing": "Processing...",
+    "form": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "phone": "Phone",
+      "address": "Address",
+      "city": "City",
+      "state": "State",
+      "zipCode": "Zip Code",
+      "country": "Country"
+    },
+    "payment": {
+      "creditCard": "Credit Card",
+      "debitCard": "Debit Card",
+      "paypal": "PayPal",
+      "stripe": "Pay with Card"
+    },
+    "steps": {
+      "cart": "Cart",
+      "shipping": "Shipping",
+      "payment": "Payment",
+      "confirmation": "Confirmation"
+    }
+  },
+  "orders": {
+    "title": "My Orders",
+    "orderHistory": "Order History",
+    "orderNumber": "Order #",
+    "date": "Date",
+    "status": "Status",
+    "total": "Total",
+    "viewDetails": "View Details",
+    "trackOrder": "Track Order",
+    "noOrders": "You have no orders yet",
+    "orderStatus": {
+      "pending": "Pending",
+      "processing": "Processing",
+      "shipped": "Shipped",
+      "delivered": "Delivered",
+      "cancelled": "Cancelled",
+      "refunded": "Refunded"
+    }
+  },
+  "account": {
+    "title": "My Account",
+    "profile": "Profile",
+    "addresses": "Addresses",
+    "settings": "Settings",
+    "wishlist": "Wishlist",
+    "editProfile": "Edit Profile",
+    "changePassword": "Change Password",
+    "manageAddresses": "Manage Addresses",
+    "orderHistory": "Order History"
+  },
+  "footer": {
+    "aboutUs": "About Us",
+    "customerService": "Customer Service",
+    "contactUs": "Contact Us",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "returnPolicy": "Return Policy",
+    "faq": "FAQ",
+    "newsletter": "Newsletter",
+    "subscribe": "Subscribe",
+    "followUs": "Follow Us",
+    "copyright": "© 2024 Shop. All rights reserved."
+  },
+  "admin": {
+    "dashboard": "Dashboard",
+    "products": "Products",
+    "categories": "Categories",
+    "orders": "Orders",
+    "customers": "Customers",
+    "analytics": "Analytics",
+    "settings": "Settings",
+    "addProduct": "Add Product",
+    "editProduct": "Edit Product",
+    "deleteProduct": "Delete Product",
+    "addCategory": "Add Category",
+    "totalSales": "Total Sales",
+    "totalOrders": "Total Orders",
+    "totalCustomers": "Total Customers",
+    "revenue": "Revenue",
+    "recentOrders": "Recent Orders"
+  },
+  "messages": {
+    "success": {
+      "productAdded": "Product added to cart",
+      "orderPlaced": "Order placed successfully",
+      "profileUpdated": "Profile updated successfully",
+      "passwordChanged": "Password changed successfully"
+    },
+    "error": {
+      "general": "Something went wrong. Please try again.",
+      "notFound": "Page not found",
+      "unauthorized": "You are not authorized to access this page",
+      "invalidCredentials": "Invalid email or password",
+      "networkError": "Network error. Please check your connection."
+    },
+    "info": {
+      "cartEmpty": "Your cart is empty",
+      "noProducts": "No products found",
+      "loadingProducts": "Loading products..."
+    }
+  }
+}

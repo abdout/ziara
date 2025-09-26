@@ -1,0 +1,195 @@
+{
+  "common": {
+    "shop": "المتجر",
+    "cart": "السلة",
+    "checkout": "الدفع",
+    "account": "حسابي",
+    "signIn": "تسجيل الدخول",
+    "signUp": "إنشاء حساب",
+    "signOut": "تسجيل الخروج",
+    "search": "بحث",
+    "searchProducts": "البحث عن المنتجات...",
+    "loading": "جاري التحميل...",
+    "error": "حدث خطأ ما",
+    "backToHome": "العودة إلى الرئيسية",
+    "currency": "ر.س"
+  },
+  "navigation": {
+    "home": "الرئيسية",
+    "products": "المنتجات",
+    "categories": "الفئات",
+    "orders": "الطلبات",
+    "about": "عن المتجر",
+    "contact": "اتصل بنا",
+    "admin": "لوحة التحكم",
+    "dashboard": "لوحة القيادة"
+  },
+  "products": {
+    "title": "المنتجات",
+    "allProducts": "جميع المنتجات",
+    "newArrivals": "وصل حديثاً",
+    "featured": "منتجات مميزة",
+    "popular": "منتجات شائعة",
+    "addToCart": "أضف إلى السلة",
+    "viewDetails": "عرض التفاصيل",
+    "price": "السعر",
+    "size": "المقاس",
+    "color": "اللون",
+    "quantity": "الكمية",
+    "inStock": "متوفر",
+    "outOfStock": "غير متوفر",
+    "selectSize": "اختر المقاس",
+    "selectColor": "اختر اللون",
+    "description": "الوصف",
+    "specifications": "المواصفات",
+    "reviews": "التقييمات",
+    "relatedProducts": "منتجات ذات صلة",
+    "sortBy": "ترتيب حسب",
+    "sortOptions": {
+      "newest": "الأحدث",
+      "priceLowToHigh": "السعر: من الأقل للأعلى",
+      "priceHighToLow": "السعر: من الأعلى للأقل",
+      "nameAZ": "الاسم: أ-ي",
+      "nameZA": "الاسم: ي-أ"
+    },
+    "filters": {
+      "title": "الفلاتر",
+      "category": "الفئة",
+      "priceRange": "نطاق السعر",
+      "size": "المقاس",
+      "color": "اللون",
+      "apply": "تطبيق الفلاتر",
+      "clear": "مسح الكل"
+    }
+  },
+  "cart": {
+    "title": "سلة التسوق",
+    "empty": "السلة فارغة",
+    "continueShopping": "متابعة التسوق",
+    "items": "منتجات",
+    "item": "منتج",
+    "subtotal": "المجموع الفرعي",
+    "shipping": "الشحن",
+    "tax": "الضريبة",
+    "total": "المجموع",
+    "proceedToCheckout": "المتابعة للدفع",
+    "remove": "حذف",
+    "updateQuantity": "تحديث الكمية",
+    "clearCart": "إفراغ السلة",
+    "cartUpdated": "تم تحديث السلة",
+    "itemRemoved": "تم حذف المنتج من السلة",
+    "itemAdded": "تم إضافة المنتج إلى السلة"
+  },
+  "checkout": {
+    "title": "إتمام الطلب",
+    "shippingAddress": "عنوان الشحن",
+    "paymentMethod": "طريقة الدفع",
+    "orderSummary": "ملخص الطلب",
+    "placeOrder": "إتمام الطلب",
+    "processing": "جاري المعالجة...",
+    "form": {
+      "firstName": "الاسم الأول",
+      "lastName": "اسم العائلة",
+      "email": "البريد الإلكتروني",
+      "phone": "الهاتف",
+      "address": "العنوان",
+      "city": "المدينة",
+      "state": "المنطقة",
+      "zipCode": "الرمز البريدي",
+      "country": "الدولة"
+    },
+    "payment": {
+      "creditCard": "بطاقة ائتمان",
+      "debitCard": "بطاقة خصم",
+      "paypal": "باي بال",
+      "stripe": "الدفع بالبطاقة"
+    },
+    "steps": {
+      "cart": "السلة",
+      "shipping": "الشحن",
+      "payment": "الدفع",
+      "confirmation": "التأكيد"
+    }
+  },
+  "orders": {
+    "title": "طلباتي",
+    "orderHistory": "سجل الطلبات",
+    "orderNumber": "رقم الطلب",
+    "date": "التاريخ",
+    "status": "الحالة",
+    "total": "المجموع",
+    "viewDetails": "عرض التفاصيل",
+    "trackOrder": "تتبع الطلب",
+    "noOrders": "لا توجد طلبات بعد",
+    "orderStatus": {
+      "pending": "قيد الانتظار",
+      "processing": "قيد المعالجة",
+      "shipped": "تم الشحن",
+      "delivered": "تم التسليم",
+      "cancelled": "ملغي",
+      "refunded": "مسترجع"
+    }
+  },
+  "account": {
+    "title": "حسابي",
+    "profile": "الملف الشخصي",
+    "addresses": "العناوين",
+    "settings": "الإعدادات",
+    "wishlist": "قائمة الأمنيات",
+    "editProfile": "تعديل الملف الشخصي",
+    "changePassword": "تغيير كلمة المرور",
+    "manageAddresses": "إدارة العناوين",
+    "orderHistory": "سجل الطلبات"
+  },
+  "footer": {
+    "aboutUs": "من نحن",
+    "customerService": "خدمة العملاء",
+    "contactUs": "اتصل بنا",
+    "privacyPolicy": "سياسة الخصوصية",
+    "termsOfService": "شروط الخدمة",
+    "returnPolicy": "سياسة الإرجاع",
+    "faq": "الأسئلة الشائعة",
+    "newsletter": "النشرة الإخبارية",
+    "subscribe": "اشترك",
+    "followUs": "تابعنا",
+    "copyright": "© 2024 المتجر. جميع الحقوق محفوظة."
+  },
+  "admin": {
+    "dashboard": "لوحة القيادة",
+    "products": "المنتجات",
+    "categories": "الفئات",
+    "orders": "الطلبات",
+    "customers": "العملاء",
+    "analytics": "التحليلات",
+    "settings": "الإعدادات",
+    "addProduct": "إضافة منتج",
+    "editProduct": "تعديل المنتج",
+    "deleteProduct": "حذف المنتج",
+    "addCategory": "إضافة فئة",
+    "totalSales": "إجمالي المبيعات",
+    "totalOrders": "إجمالي الطلبات",
+    "totalCustomers": "إجمالي العملاء",
+    "revenue": "الإيرادات",
+    "recentOrders": "الطلبات الأخيرة"
+  },
+  "messages": {
+    "success": {
+      "productAdded": "تم إضافة المنتج إلى السلة",
+      "orderPlaced": "تم إرسال الطلب بنجاح",
+      "profileUpdated": "تم تحديث الملف الشخصي بنجاح",
+      "passwordChanged": "تم تغيير كلمة المرور بنجاح"
+    },
+    "error": {
+      "general": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
+      "notFound": "الصفحة غير موجودة",
+      "unauthorized": "ليس لديك صلاحية للوصول إلى هذه الصفحة",
+      "invalidCredentials": "البريد الإلكتروني أو كلمة المرور غير صحيحة",
+      "networkError": "خطأ في الشبكة. يرجى التحقق من الاتصال."
+    },
+    "info": {
+      "cartEmpty": "السلة فارغة",
+      "noProducts": "لا توجد منتجات",
+      "loadingProducts": "جاري تحميل المنتجات..."
+    }
+  }
+}
