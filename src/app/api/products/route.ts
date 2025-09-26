@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import prisma from '@/lib/prisma'
 import { producer } from '@/lib/kafka'
 import { StripeProductType } from '@/types'
-import { auth } from '@clerk/nextjs/server'
+// import { auth } from '@clerk/nextjs/server'
 import { Prisma } from '@prisma/client'
 
 // GET /api/products - Get all products with optional filters
