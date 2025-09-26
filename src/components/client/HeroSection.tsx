@@ -11,9 +11,9 @@ const HeroSection = () => {
   return (
     <div className="bg-amber-400 rounded-lg p-4 md:p-6 mb-8">
       {/* Images in a row */}
-      <div className="flex justify-center gap-2 md:gap-6 mb-4">
+      <div className="flex justify-center gap-3 md:gap-8 mb-6">
         {productImages.map((src, index) => (
-          <div key={index} className="relative w-16 h-16 md:w-20 md:h-20">
+          <div key={index} className="relative w-24 h-24 md:w-32 md:h-32">
             <Image
               src={src}
               alt=""
@@ -25,7 +25,7 @@ const HeroSection = () => {
       </div>
 
       {/* Text */}
-      <h2 className="text-center text-lg md:text-xl font-bold text-gray-800">
+      <h2 className="text-center text-2xl md:text-3xl font-extrabold text-gray-800">
         Stylish. Bold. Comfort. Sleek.
       </h2>
     </div>

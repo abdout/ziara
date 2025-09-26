@@ -1,55 +1,32 @@
 "use client";
-import {
-  Footprints,
-  Glasses,
-  Briefcase,
-  Shirt,
-  ShoppingBasket,
-  Hand,
-  Venus,
-} from "lucide-react";
+import Image from "next/image";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 const categories = [
   {
-    name: "All",
-    icon: <ShoppingBasket className="w-4 h-4" />,
-    slug: "all",
+    name: "Bowtie",
+    icon: "/client/Bowtie.svg",
+    slug: "bowtie",
   },
   {
-    name: "T-shirts",
-    icon: <Shirt className="w-4 h-4" />,
-    slug: "t-shirts",
+    name: "Handbag",
+    icon: "/client/Handbag 3.svg",
+    slug: "handbag",
   },
   {
-    name: "Shoes",
-    icon: <Footprints className="w-4 h-4" />,
-    slug: "shoes",
+    name: "Scarf",
+    icon: "/client/Scarf.svg",
+    slug: "scarf",
   },
   {
-    name: "Accessories",
-    icon: <Glasses className="w-4 h-4" />,
-    slug: "accessories",
+    name: "Shorts",
+    icon: "/client/Shorts 3.svg",
+    slug: "shorts",
   },
   {
-    name: "Bags",
-    icon: <Briefcase className="w-4 h-4" />,
-    slug: "bags",
-  },
-  {
-    name: "Dresses",
-    icon: <Venus className="w-4 h-4" />,
-    slug: "dresses",
-  },
-  {
-    name: "Jackets",
-    icon: <Shirt className="w-4 h-4" />,
-    slug: "jackets",
-  },
-  {
-    name: "Gloves",
-    icon: <Hand className="w-4 h-4" />,
-    slug: "gloves",
+    name: "Tennis Skirt",
+    icon: "/client/Tennis Skirt.svg",
+    slug: "tennis-skirt",
   },
 ];
 
@@ -67,17 +44,24 @@ const Categories = () => {
   };
 
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-2 bg-gray-100 p-2 rounded-lg mb-4 text-sm">
+    <div className="flex justify-center gap-2 bg-gray-100 p-2 rounded-lg mb-4 text-sm">
       {categories.map((category) => (
         <div
-          className={`flex items-center justify-center gap-2 cursor-pointer px-2 py-1 rounded-md ${
+          className={`flex items-center justify-center gap-1 cursor-pointer px-2 py-1 rounded-md ${
             category.slug === selectedCategory ? "bg-white" : "text-gray-500"
           }`}
           key={category.name}
           onClick={() => handleChange(category.slug)}
         >
-          {category.icon}
-          {category.name}
+          <div className="relative w-5 h-5">
+            <Image
+              src={category.icon}
+              alt={category.name}
+              fill
+              className="object-contain"
+            />
+          </div>
+          <span className="text-xs">{category.name}</span>
         </div>
       ))}
     </div>
