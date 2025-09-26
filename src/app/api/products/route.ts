@@ -7,6 +7,9 @@ import { Prisma } from '@prisma/client'
 
 // GET /api/products - Get all products with optional filters
 export async function GET(request: NextRequest) {
+  console.log('[API/products] GET request received');
+  console.log('[API/products] Headers:', Object.fromEntries(request.headers.entries()));
+
   try {
     const searchParams = request.nextUrl.searchParams
     const sort = searchParams.get('sort')

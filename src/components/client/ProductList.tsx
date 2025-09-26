@@ -159,7 +159,10 @@ const fetchData = async ({
   );
 
   if (!res.ok) {
+    const text = await res.text();
     console.error(`Failed to fetch products: ${res.status} ${res.statusText}`);
+    console.error(`Response body: ${text.substring(0, 500)}`);
+    console.error(`URL was: ${baseUrl}/api/products`);
     return [];
   }
 
