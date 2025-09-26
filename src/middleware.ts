@@ -12,16 +12,13 @@ const isPublicRoute = createRouteMatcher([
   "/:lang/sign-in(.*)",
   "/:lang/sign-up(.*)",
   "/:lang/unauthorized(.*)",
-  "/api/products(.*)",
-  "/api/categories(.*)",
+  "/api/webhooks(.*)",
 ]);
 
 // Define admin-only routes
 const isAdminRoute = createRouteMatcher([
   "/:lang/admin(.*)",
-  "/api/products/:method(POST|PUT|DELETE)",
-  "/api/categories/:method(POST|PUT|DELETE)",
-  "/api/users(.*)",
+  "/api/admin(.*)",
 ]);
 
 // Helper function to check if pathname has locale
@@ -58,22 +55,50 @@ function getLocale(request: NextRequest): string {
 
 export default clerkMiddleware(async (auth, req) => {
   const pathname = req.nextUrl.pathname;
+  const method = req.method;
 
-  // For API routes, check if they need authentication
+  // API routes - handle separately
   if (pathname.startsWith("/api")) {
-    // Only protect non-GET methods for products/categories
-    const method = req.method;
+    // Public API endpoints - no auth needed
     if (
-      (pathname.startsWith("/api/products") || pathname.startsWith("/api/categories")) &&
-      method === "GET"
+      pathname.startsWith("/api/products") && method === "GET" ||
+      pathname.startsWith("/api/categories") && method === "GET" ||
+      pathname.startsWith("/api/webhooks")
     ) {
       return NextResponse.next();
     }
 
-    // Protect other API routes that need auth
-    if (!isPublicRoute(req)) {
-      await auth.protect();
+    // Admin API endpoints
+    if (pathname.startsWith("/api/admin")) {
+      const { userId, sessionClaims } = await auth();
+
+      if (!userId) {
+        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+      }
+
+      const userRole = (sessionClaims as CustomJwtSessionClaims).metadata?.role;
+      if (userRole !== "admin") {
+        return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+      }
     }
+
+    // Protected API endpoints (POST, PUT, DELETE for products/categories)
+    if (
+      (pathname.startsWith("/api/products") || pathname.startsWith("/api/categories")) &&
+      (method === "POST" || method === "PUT" || method === "DELETE")
+    ) {
+      const { userId, sessionClaims } = await auth();
+
+      if (!userId) {
+        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+      }
+
+      const userRole = (sessionClaims as CustomJwtSessionClaims).metadata?.role;
+      if (userRole !== "admin") {
+        return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+      }
+    }
+
     return NextResponse.next();
   }
 
@@ -103,7 +128,7 @@ export default clerkMiddleware(async (auth, req) => {
   // Extract locale from pathname
   const locale = pathname.split('/')[1] || i18n.defaultLocale;
 
-  // Handle authentication
+  // Handle authentication for non-API routes
   if (!isPublicRoute(req)) {
     await auth.protect();
 
