@@ -28,6 +28,21 @@ const categories = [
     icon: "/client/Tennis Skirt.svg",
     slug: "tennis-skirt",
   },
+  {
+    name: "Jeans",
+    icon: "/client/Jeans.svg",
+    slug: "jeans",
+  },
+  {
+    name: "Sweater",
+    icon: "/client/Sweater.svg",
+    slug: "sweater",
+  },
+  {
+    name: "Waistcoat",
+    icon: "/client/Waistcoat 3.svg",
+    slug: "waistcoat",
+  },
 ];
 
 const Categories = () => {
@@ -53,7 +68,7 @@ const Categories = () => {
           key={category.name}
           onClick={() => handleChange(category.slug)}
         >
-          <div className="relative w-5 h-5">
+          <div className="relative w-8 h-8">
             <Image
               src={category.icon}
               alt={category.name}

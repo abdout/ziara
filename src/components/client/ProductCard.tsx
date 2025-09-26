@@ -43,7 +43,7 @@ const ProductCard = ({ product }: { product: ProductType }) => {
     <div className="shadow-lg rounded-lg overflow-hidden">
       {/* IMAGE */}
       <Link href={`/products/${product.id}`}>
-        <div className="relative aspect-[3/4]">
+        <div className="relative aspect-[3/2]">
           <Image
             src={(product.images as any)?.[productTypes.color]?.[0] || ""}
             alt={product.name}
@@ -53,11 +53,11 @@ const ProductCard = ({ product }: { product: ProductType }) => {
         </div>
       </Link>
       {/* PRODUCT DETAIL */}
-      <div className="flex flex-col gap-2 p-3">
-        <h1 className="font-medium">{product.name}</h1>
-        <p className="text-sm text-gray-500">{product.shortDescription}</p>
+      <div className="flex flex-col gap-1 p-2">
+        <h1 className="font-medium text-sm">{product.name}</h1>
+        <p className="text-xs text-gray-500 line-clamp-1">{product.shortDescription}</p>
         {/* PRODUCT TYPES */}
-        <div className="flex items-center gap-3 text-xs">
+        <div className="flex items-center gap-2 text-xs">
           {/* SIZES */}
           <div className="flex flex-col gap-1">
             <span className="text-gray-500">Size</span>
@@ -103,13 +103,13 @@ const ProductCard = ({ product }: { product: ProductType }) => {
         </div>
         {/* PRICE AND ADD TO CART BUTTON */}
         <div className="flex items-center justify-between">
-          <p className="font-medium">${product.price.toFixed(2)}</p>
+          <p className="font-medium text-sm">${product.price.toFixed(2)}</p>
           <button
             onClick={handleAddToCart}
-            className="ring-1 ring-gray-200 shadow-lg rounded-md px-2 py-1 text-sm cursor-pointer hover:text-white hover:bg-black transition-all duration-300 flex items-center gap-2"
+            className="ring-1 ring-gray-200 shadow-lg rounded-md px-1.5 py-0.5 text-xs cursor-pointer hover:text-white hover:bg-black transition-all duration-300 flex items-center gap-1"
           >
-            <ShoppingCart className="w-4 h-4" />
-            Add to Cart
+            <ShoppingCart className="w-3 h-3" />
+            Add
           </button>
         </div>
       </div>

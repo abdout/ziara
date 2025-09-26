@@ -25,7 +25,7 @@ const HeroSection = () => {
       </div>
 
       {/* Text */}
-      <h2 className="text-center text-2xl md:text-3xl font-extrabold text-gray-800">
+      <h2 className="text-center text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-800">
         Stylish. Bold. Comfort. Sleek.
       </h2>
     </div>
