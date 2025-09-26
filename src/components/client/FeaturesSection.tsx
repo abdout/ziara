@@ -29,7 +29,7 @@ export function FeaturesSection({ locale }: { locale: Locale }) {
   ];
 
   return (
-    <section className="py-8 mx-20 flex items-center justify-center">
+    <section className="py-4 mx-10 md:py-8 md:mx-20 flex items-center justify-center">
       <div className="max-w-5xl mx-auto">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4">
           {features.map((feature, index) => (

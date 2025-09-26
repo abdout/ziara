@@ -13,14 +13,14 @@ const HeroSection = ({ locale }: { locale: Locale }) => {
   ];
 
   return (
-    <div className="h-[calc(100vh-80px)] flex flex-col justify-center items-center">
+    <div className="h-[calc(100vh-120px)] md:h-[calc(100vh-80px)] flex flex-col justify-center items-center">
       <div className="w-full">
         {/* Hero Banner */}
-        <div className="bg-amber-400 rounded-t-lg p-4 md:p-6">
-        {/* Images - 2 per row on mobile, 4 per row on desktop */}
-        <div className="grid grid-cols-2 md:flex md:justify-center gap-3 md:gap-8 mb-6 max-w-sm md:max-w-none mx-auto">
+        <div className="bg-amber-400 rounded-t-lg p-3 md:p-6">
+        {/* Images - 4 in a row on all screens */}
+        <div className="flex justify-center gap-2 md:gap-8 mb-4 md:mb-6">
           {productImages.map((src, index) => (
-            <div key={index} className="relative w-24 h-24 md:w-32 md:h-32 mx-auto">
+            <div key={index} className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32">
               <Image
                 src={src}
                 alt=""
@@ -32,7 +32,7 @@ const HeroSection = ({ locale }: { locale: Locale }) => {
         </div>
 
         {/* Text - formatted for mobile and desktop */}
-        <h2 className="text-center text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-800 pb-6">
+        <h2 className="text-center text-4xl md:text-4xl lg:text-5xl font-extrabold text-gray-800 pb-4 md:pb-6">
           {locale === 'en' ? (
             <>
               <span className="md:hidden">
