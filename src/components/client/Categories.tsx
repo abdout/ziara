@@ -57,10 +57,10 @@ const Categories = ({ locale }: { locale: Locale }) => {
   };
 
   return (
-    <div className="flex  border-b border-gray-100 justify-center gap-8 my-8 text-base">
+    <div className="flex border-b border-gray-100 gap-8 my-8 text-base overflow-x-auto scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
       {categories.map((category) => (
         <div
-          className={`flex items-center justify-center gap-1 cursor-pointer py-1 rounded-md ${
+          className={`flex items-center justify-center gap-1 cursor-pointer py-1 rounded-md flex-shrink-0 ${
             category.slug === selectedCategory ? "bg-white text-black font-bold" : "text-black font-semibold"
           }`}
           key={category.name}

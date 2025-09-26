@@ -17,10 +17,10 @@ const HeroSection = ({ locale }: { locale: Locale }) => {
       <div className="w-full">
         {/* Hero Banner */}
         <div className="bg-amber-400 rounded-t-lg p-4 md:p-6">
-        {/* Images in a row */}
-        <div className="flex justify-center gap-3 md:gap-8 mb-6">
+        {/* Images - 2 per row on mobile, 4 per row on desktop */}
+        <div className="grid grid-cols-2 md:flex md:justify-center gap-3 md:gap-8 mb-6 max-w-sm md:max-w-none mx-auto">
           {productImages.map((src, index) => (
-            <div key={index} className="relative w-24 h-24 md:w-32 md:h-32">
+            <div key={index} className="relative w-24 h-24 md:w-32 md:h-32 mx-auto">
               <Image
                 src={src}
                 alt=""
@@ -31,9 +31,25 @@ const HeroSection = ({ locale }: { locale: Locale }) => {
           ))}
         </div>
 
-        {/* Text */}
+        {/* Text - formatted for mobile and desktop */}
         <h2 className="text-center text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-800 pb-6">
-          {dict.hero.slogan}
+          {locale === 'en' ? (
+            <>
+              <span className="md:hidden">
+                <span className="block">Stylish. Bold.</span>
+                <span className="block">Comfort. Sleek.</span>
+              </span>
+              <span className="hidden md:inline">{dict.hero.slogan}</span>
+            </>
+          ) : (
+            <>
+              <span className="md:hidden">
+                <span className="block">أنيق. جريء.</span>
+                <span className="block">مريح. أملس.</span>
+              </span>
+              <span className="hidden md:inline">{dict.hero.slogan}</span>
+            </>
+          )}
         </h2>
       </div>
 

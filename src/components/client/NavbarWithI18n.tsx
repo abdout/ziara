@@ -58,10 +58,6 @@ export default function NavbarWithI18n({ locale }: NavbarProps) {
         <ProfileButton />
       </div>
 
-      {/* Mobile Search Bar */}
-      <div className="lg:hidden fixed bottom-20 left-4 right-4 z-10 bg-white shadow-lg rounded-lg p-2">
-        <SearchBar />
-      </div>
     </nav>
   );
 }
