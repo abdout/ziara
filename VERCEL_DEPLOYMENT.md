@@ -56,8 +56,9 @@ When deploying to Vercel, you need to set the following environment variables in
 
 ## Important Notes
 
-- The app automatically uses `VERCEL_URL` for API calls in production
-- No need to set `NEXT_PUBLIC_APP_URL` manually - it's handled automatically
+- The app automatically detects the correct domain for API calls
+- API calls use relative URLs, so they work with any custom domain
+- No need to set `NEXT_PUBLIC_APP_URL` or worry about domain configuration
 - Make sure your Neon database allows connections from Vercel's IP addresses
 - Set up Clerk webhook endpoints if using advanced features
 

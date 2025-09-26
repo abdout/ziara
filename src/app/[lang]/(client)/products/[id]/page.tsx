@@ -1,7 +1,7 @@
 import ProductInteraction from "@/components/client/ProductInteraction";
 import { ProductType } from "@/types";
 import Image from "next/image";
-import { getBaseUrl } from "@/lib/get-base-url";
+import { getApiUrl } from "@/lib/get-api-url";
 
 // TEMPORARY
 // const product: ProductType = {
@@ -25,11 +25,9 @@ import { getBaseUrl } from "@/lib/get-base-url";
 // };
 
 const fetchProduct = async (id: string) => {
-  const baseUrl = getBaseUrl();
+  const url = getApiUrl(`/api/products/${id}`);
 
-  const res = await fetch(
-    `${baseUrl}/api/products/${id}`
-  );
+  const res = await fetch(url);
 
   if (!res.ok) {
     console.error(`Failed to fetch product: ${res.status} ${res.statusText}`);

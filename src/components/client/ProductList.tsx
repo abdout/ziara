@@ -3,7 +3,7 @@ import Categories from "./Categories";
 import ProductCard from "./ProductCard";
 import Link from "next/link";
 import Filter from "./Filter";
-import { getBaseUrl } from "@/lib/get-base-url";
+import { getApiUrl } from "@/lib/get-api-url";
 
 // TEMPORARY
 // const products: ProductsType = [
@@ -152,17 +152,16 @@ const fetchData = async ({
   search?: string;
   params: "homepage" | "products";
 }) => {
-  const baseUrl = getBaseUrl();
+  const endpoint = `/api/products?${category ? `category=${category}` : ""}${search ? `&search=${search}` : ""}&sort=${sort || "newest"}${params === "homepage" ? "&limit=8" : ""}`;
+  const url = getApiUrl(endpoint);
 
-  const res = await fetch(
-    `${baseUrl}/api/products?${category ? `category=${category}` : ""}${search ? `&search=${search}` : ""}&sort=${sort || "newest"}${params === "homepage" ? "&limit=8" : ""}`
-  );
+  const res = await fetch(url);
 
   if (!res.ok) {
     const text = await res.text();
     console.error(`Failed to fetch products: ${res.status} ${res.statusText}`);
     console.error(`Response body: ${text.substring(0, 500)}`);
-    console.error(`URL was: ${baseUrl}/api/products`);
+    console.error(`URL was: ${url}`);
     return [];
   }
 

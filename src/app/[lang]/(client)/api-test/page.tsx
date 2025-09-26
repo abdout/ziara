@@ -1,8 +1,6 @@
-import { getBaseUrl } from "@/lib/get-base-url";
+import { getApiUrl } from "@/lib/get-api-url";
 
 async function testAPI() {
-  const baseUrl = getBaseUrl();
-
   const endpoints = [
     '/api/test',
     '/api/products',
@@ -13,7 +11,7 @@ async function testAPI() {
 
   for (const endpoint of endpoints) {
     try {
-      const url = `${baseUrl}${endpoint}`;
+      const url = getApiUrl(endpoint);
       console.log(`Testing ${url}...`);
       const res = await fetch(url);
       const text = await res.text();
@@ -65,8 +63,8 @@ export default async function APITestPage() {
         ))}
       </div>
       <div className="mt-8 p-4 bg-gray-100 rounded">
-        <h2 className="font-bold mb-2">Base URL:</h2>
-        <p>{getBaseUrl()}</p>
+        <h2 className="font-bold mb-2">API URL for /api/test:</h2>
+        <p>{getApiUrl('/api/test')}</p>
       </div>
     </div>
   );
