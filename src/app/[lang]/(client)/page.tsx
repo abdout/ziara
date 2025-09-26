@@ -1,5 +1,5 @@
 import ProductList from "@/components/client/ProductList";
-import Image from "next/image";
+import HeroSection from "@/components/client/HeroSection";
 
 const Homepage = async ({
   searchParams,
@@ -8,10 +8,8 @@ const Homepage = async ({
 }) => {
   const category = (await searchParams).category;
   return (
-    <div className="">
-      <div className="relative aspect-[3/1] mb-12">
-        <Image src="/client/featured.png" alt="Featured Product" fill />
-      </div>
+    <div>
+      <HeroSection />
       <ProductList category={category} params="homepage"/>
     </div>
   );
