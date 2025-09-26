@@ -24,7 +24,7 @@ const categories = [
     slug: "shorts",
   },
   {
-    name: "Tennis Skirt",
+    name: "Skirt",
     icon: "/client/Tennis Skirt.svg",
     slug: "tennis-skirt",
   },
@@ -54,16 +54,16 @@ const Categories = () => {
   };
 
   return (
-    <div className="flex justify-center gap-2 bg-gray-100 p-2 rounded-lg mb-4 text-sm">
+    <div className="flex  border-b border-gray-100 justify-center gap-8 my-8 text-base">
       {categories.map((category) => (
         <div
-          className={`flex items-center justify-center gap-1 cursor-pointer px-2 py-1 rounded-md ${
-            category.slug === selectedCategory ? "bg-white" : "text-gray-500"
+          className={`flex items-center justify-center gap-1 cursor-pointer py-1 rounded-md ${
+            category.slug === selectedCategory ? "bg-white text-black font-bold" : "text-black font-semibold"
           }`}
           key={category.name}
           onClick={() => handleChange(category.slug)}
         >
-          <div className="relative w-10 h-10">
+          <div className="relative w-12 h-12">
             <Image
               src={category.icon}
               alt={category.name}
@@ -71,7 +71,7 @@ const Categories = () => {
               className="object-contain"
             />
           </div>
-          <span className="text-xs">{category.name}</span>
+          <span className="text-sm font-medium">{category.name}</span>
         </div>
       ))}
     </div>

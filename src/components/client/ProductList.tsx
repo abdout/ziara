@@ -16,7 +16,7 @@ const ProductList = ({
   return (
     <div className="w-full">
       <Categories />
-      {params === "products" && <Filter />}
+      <Filter />
       <ProductListClient
         category={category}
         sort={sort}

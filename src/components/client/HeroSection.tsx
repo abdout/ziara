@@ -1,4 +1,4 @@
-import Image from "next/image";
+ import Image from "next/image";
 import FeaturesSection from "./FeaturesSection";
 
 const HeroSection = () => {
@@ -10,9 +10,10 @@ const HeroSection = () => {
   ];
 
   return (
-    <div className="mb-8">
-      {/* Hero Banner */}
-      <div className="bg-amber-400 rounded-t-lg p-4 md:p-6">
+    <div className="h-[calc(100vh-80px)] flex flex-col justify-center items-center">
+      <div className="w-full">
+        {/* Hero Banner */}
+        <div className="bg-amber-400 rounded-t-lg p-4 md:p-6">
         {/* Images in a row */}
         <div className="flex justify-center gap-3 md:gap-8 mb-6">
           {productImages.map((src, index) => (
@@ -33,9 +34,10 @@ const HeroSection = () => {
         </h2>
       </div>
 
-      {/* Features Section - attached to hero */}
-      <div className="bg-gray-50 rounded-b-lg">
-        <FeaturesSection />
+        {/* Features Section - attached to hero */}
+        <div className="bg-gray-100 rounded-b-lg">
+          <FeaturesSection />
+        </div>
       </div>
     </div>
   );

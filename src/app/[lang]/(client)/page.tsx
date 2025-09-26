@@ -8,8 +8,10 @@ const Homepage = async ({
 }) => {
   const category = (await searchParams).category;
   return (
-    <div>
-      <HeroSection />
+    <div className="flex flex-col">
+      <div className=" flex flex-col">
+        <HeroSection />
+      </div>
       <ProductList category={category} params="homepage"/>
     </div>
   );
