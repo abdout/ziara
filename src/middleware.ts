@@ -1,25 +1,6 @@
-import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { i18n } from "@/components/local/config";
-import { CustomJwtSessionClaims } from "@/types";
-
-// Define public routes that don't require authentication
-const isPublicRoute = createRouteMatcher([
-  "/",
-  "/:lang",
-  "/:lang/products(.*)",
-  "/:lang/sign-in(.*)",
-  "/:lang/sign-up(.*)",
-  "/:lang/unauthorized(.*)",
-  "/api/webhooks(.*)",
-]);
-
-// Define admin-only routes
-const isAdminRoute = createRouteMatcher([
-  "/:lang/admin(.*)",
-  "/api/admin(.*)",
-]);
 
 // Helper function to check if pathname has locale
 function pathnameHasLocale(pathname: string) {
@@ -53,57 +34,16 @@ function getLocale(request: NextRequest): string {
   return i18n.defaultLocale;
 }
 
-export default clerkMiddleware(async (auth, req) => {
+export function middleware(req: NextRequest) {
   const pathname = req.nextUrl.pathname;
-  const method = req.method;
 
-  // API routes - handle separately
+  // IMPORTANT: Skip all API routes completely
   if (pathname.startsWith("/api")) {
-    // Public API endpoints - no auth needed
-    if (
-      pathname.startsWith("/api/products") && method === "GET" ||
-      pathname.startsWith("/api/categories") && method === "GET" ||
-      pathname.startsWith("/api/webhooks")
-    ) {
-      return NextResponse.next();
-    }
-
-    // Admin API endpoints
-    if (pathname.startsWith("/api/admin")) {
-      const { userId, sessionClaims } = await auth();
-
-      if (!userId) {
-        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-      }
-
-      const userRole = (sessionClaims as CustomJwtSessionClaims).metadata?.role;
-      if (userRole !== "admin") {
-        return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
-      }
-    }
-
-    // Protected API endpoints (POST, PUT, DELETE for products/categories)
-    if (
-      (pathname.startsWith("/api/products") || pathname.startsWith("/api/categories")) &&
-      (method === "POST" || method === "PUT" || method === "DELETE")
-    ) {
-      const { userId, sessionClaims } = await auth();
-
-      if (!userId) {
-        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-      }
-
-      const userRole = (sessionClaims as CustomJwtSessionClaims).metadata?.role;
-      if (userRole !== "admin") {
-        return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
-      }
-    }
-
     return NextResponse.next();
   }
 
-  // Skip locale handling for static files
-  if (pathname.startsWith("/_next")) {
+  // Skip static files
+  if (pathname.startsWith("/_next") || pathname.includes(".")) {
     return NextResponse.next();
   }
 
@@ -128,24 +68,6 @@ export default clerkMiddleware(async (auth, req) => {
   // Extract locale from pathname
   const locale = pathname.split('/')[1] || i18n.defaultLocale;
 
-  // Handle authentication for non-API routes
-  if (!isPublicRoute(req)) {
-    await auth.protect();
-
-    // Check admin routes
-    if (isAdminRoute(req)) {
-      const { userId, sessionClaims } = await auth();
-
-      if (userId && sessionClaims) {
-        const userRole = (sessionClaims as CustomJwtSessionClaims).metadata?.role;
-
-        if (userRole !== "admin") {
-          return NextResponse.redirect(new URL(`/${locale}/unauthorized`, req.url));
-        }
-      }
-    }
-  }
-
   // Create response
   const response = NextResponse.next();
 
@@ -157,13 +79,13 @@ export default clerkMiddleware(async (auth, req) => {
   });
 
   return response;
-});
+}
 
 export const config = {
   matcher: [
-    // Skip Next.js internals and all static files
-    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
-    // Always run for API routes
-    "/api/(.*)",
+    // Match all pathnames except for
+    // - ... if they start with `/api`, `/_next` or `/_vercel`
+    // - ... the ones containing a dot (e.g. `favicon.ico`)
+    "/((?!api|_next|_vercel|.*\\..*).*)",
   ],
 };
